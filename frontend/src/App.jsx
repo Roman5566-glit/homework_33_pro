@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useQuery, gql } from "@apollo/client";
 
-// Отрегулированный GraphQL-запрос под вашу схему в Django
+
 const SEARCH_PRODUCTS = gql`
   query SearchProducts($query: String!) {
     searchProducts(query: $query) {
@@ -17,7 +17,6 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [triggerQuery, setTriggerQuery] = useState("");
 
-  // Хук сработает и сделает запрос к Elasticsearch через Django при изменении triggerQuery
   const { loading, error, data } = useQuery(SEARCH_PRODUCTS, {
     variables: { query: triggerQuery },
     skip: triggerQuery === "", 
